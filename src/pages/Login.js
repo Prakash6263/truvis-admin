@@ -124,7 +124,7 @@ const Login = () => {
 
         {/* Graphic Side */}
         <div className="graphic-side">
-          <img src="assets/img/login.png" alt="Truvis Logo" />
+          <img src="/assets/img/login.png" alt="Truvis Logo" />
         </div>
       </div>
     </main>

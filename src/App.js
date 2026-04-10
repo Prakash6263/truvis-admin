@@ -4,6 +4,8 @@ import ProtectedRoute from "./components/ProtectedRoute"
 import Login from "./pages/Login"
 import Dashboard from "./pages/Dashboard"
 import Plans from "./pages/Plans"
+import Users from "./pages/Users"
+import UserDetails from "./pages/UserDetails"
 import Preloader from "./components/Preloader"
 
 function App() {
@@ -42,6 +44,22 @@ function App() {
               element={
                 <ProtectedRoute requireAuth={true}>
                   <Plans />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/users"
+              element={
+                <ProtectedRoute requireAuth={true}>
+                  <Users />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/user-details/:userId"
+              element={
+                <ProtectedRoute requireAuth={true}>
+                  <UserDetails />
                 </ProtectedRoute>
               }
             />

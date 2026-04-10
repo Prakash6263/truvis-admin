@@ -36,7 +36,7 @@ const Signup = () => {
 
       {/* Signup Box */}
       <div className="signup-box mb-5">
-        <img src="assets/img/logo/logo.png" alt="Logo" />
+        <img src="/assets/img/logo/logo.png" alt="Logo" />
         <form onSubmit={handleSubmit}>
           <div className="mb-3 text-start">
             <label htmlFor="name" className="form-label">

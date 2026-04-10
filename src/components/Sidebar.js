@@ -1,11 +1,17 @@
 "use client"
 import { useAuth } from "../context/AuthContext"
+import { useLocation, Link } from "react-router-dom"
 
 const Sidebar = ({ isCollapsed }) => {
   const { logout } = useAuth()
+  const location = useLocation()
 
   const handleLogout = () => {
     logout()
+  }
+
+  const isActive = (path) => {
+    return location.pathname === path || location.pathname.startsWith(path + "/")
   }
 
   return (
@@ -15,52 +21,23 @@ const Sidebar = ({ isCollapsed }) => {
       </div>
 
       <ul className="chat-list">
-        <li className="active">
-          <a href="/dashboard">
+        <li className={isActive("/dashboard") ? "active" : ""}>
+          <Link to="/dashboard">
             <img src="icons/default.png" style={{ width: "20px", marginRight: "10px" }} alt="dashboard" />
             Dashboard
-          </a>
+          </Link>
         </li>
-        <li>
-          <a href="#">
-            <img src="icons/chart.png" style={{ width: "20px", marginRight: "10px" }} alt="chart" />
-            Risk Prediction
-          </a>
+        <li className={isActive("/users") ? "active" : ""}>
+          <Link to="/users">
+            <img src="icons/person.png" style={{ width: "20px", marginRight: "10px" }} alt="users" />
+            Users
+          </Link>
         </li>
-        <li>
-          <a href="#">
-            <img src="icons/card.png" style={{ width: "20px", marginRight: "10px" }} alt="card" />
-            Flagged Anomalies
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img src="icons/repair.png" style={{ width: "20px", marginRight: "10px" }} alt="repair" />
-            Trends
-          </a>
-        </li>
-      </ul>
-
-      <h6 className="mb-2">ACCOUNT PAGES</h6>
-
-      <ul className="chat-list">
-        <li>
-          <a href="#">
-            <img src="icons/person.png" style={{ width: "20px", marginRight: "10px" }} alt="person" />
-            Profile
-          </a>
-        </li>
-        <li>
-          <a href="/plans">
+        <li className={isActive("/plans") ? "active" : ""}>
+          <Link to="/plans">
             <i className="fa fa-dollar-sign" style={{ color: "#3ac6bd", marginRight: "10px" }}></i>
             Plans
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i className="fa fa-file" style={{ color: "#3ac6bd", marginRight: "10px" }}></i>
-            Reports
-          </a>
+          </Link>
         </li>
       </ul>
 
